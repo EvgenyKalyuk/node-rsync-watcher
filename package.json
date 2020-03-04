@@ -1,0 +1,19 @@
+{
+  "name": "node-rsync-watcher",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon"
+  },
+  "dependencies": {
+    "@types/node": "^13.7.7",
+    "commander": "^4.1.1"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  }
+}
