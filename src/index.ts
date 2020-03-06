@@ -2,7 +2,7 @@
 
 import commander from 'commander';
 
-import rsyncWatcherScript from './scripts/rsync-wather';
+// import rsyncWatcherScript from './scripts/rsync-wather';
 
 import getPackageVersion from './utils/get-package-version';
 
@@ -18,10 +18,13 @@ async function init() {
     console.log(version);
 
     commander
+        .passCommandToAction(false)
         .version(version)
-        .option('-c <path>, --config <path>', 'config file path (default: current path)', process.cwd())
-        .action(rsyncWatcherScript)
+        .name('node-rsync-watcher')
+        .requiredOption('-c <filePath>, --config <filePath>', 'config file path')
         .parse(process.argv);
+
+    console.log(commander.config);
 }
 
 init();

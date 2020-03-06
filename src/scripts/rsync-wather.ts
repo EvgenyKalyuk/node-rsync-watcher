@@ -1,8 +1,9 @@
+import Commander from 'commander';
+
 // import readConfigFile from '../utils/read-config-file';
 
-export default (path: string, a: string, b: string): void => {
-    console.log(path);
-    console.log(a);
-    console.log(b);
+export default (program: typeof Commander, configFilePath: string): void => {
+    console.log(configFilePath);
+    console.log(program.config);
 
 }
