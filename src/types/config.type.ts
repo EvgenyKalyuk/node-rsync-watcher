@@ -1,5 +1,4 @@
-export type ConfigType = {
-    name: string,
+export type ConfigObjectType = {
     source: string,
     targetDir: string,
     server: string,
@@ -7,3 +6,11 @@ export type ConfigType = {
     exclude?: Array<string>,
     include?: Array<string>
 }
+
+export type ConfigArrayType = Array<{
+    name: string;
+} & ConfigObjectType>;
+
+export type ConfigType =
+    | ConfigObjectType
+    | ConfigArrayType;

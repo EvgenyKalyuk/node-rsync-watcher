@@ -4,19 +4,19 @@ import notificationSystem from '../notification-system';
 
 import logger from '../../utils/logger';
 
-import { ConfigType } from '../../types/config.type';
+import { ConfigObjectType } from '../../types/config.type';
 
-export default (config: ConfigType): void => {
+export default (config: ConfigObjectType): void => {
     let command = 'rsync -r -a -z';
 
     if (config.include && config.include.length) {
-        config.include.forEach(item => {
+        config.include.forEach((item: string) => {
             command += ` --exclude ${item}`;
         });
     }
 
     if (config.exclude && config.exclude.length) {
-        config.exclude.forEach(item => {
+        config.exclude.forEach((item: string) => {
             command += ` --exclude ${item}`;
         });
     }

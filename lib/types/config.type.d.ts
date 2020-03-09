@@ -1,5 +1,4 @@
-export declare type ConfigType = {
-    name: string;
+export declare type ConfigObjectType = {
     source: string;
     targetDir: string;
     server: string;
@@ -7,3 +6,7 @@ export declare type ConfigType = {
     exclude?: Array<string>;
     include?: Array<string>;
 };
+export declare type ConfigArrayType = Array<{
+    name: string;
+} & ConfigObjectType>;
+export declare type ConfigType = ConfigObjectType | ConfigArrayType;

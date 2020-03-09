@@ -1,13 +1,3 @@
-declare type OptionFlags = {
-    config: {
-        flags: Array<string>;
-    };
-    notifications: {
-        flags: Array<string>;
-    };
-    watch: {
-        flags: Array<string>;
-    };
-};
-declare const _default: OptionFlags;
+import { OptionFlagsType } from '../types/options.type';
+declare const _default: OptionFlagsType;
 export default _default;

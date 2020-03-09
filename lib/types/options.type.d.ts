@@ -3,3 +3,14 @@ export declare type OptionsType = {
     notifications?: boolean;
     watch?: boolean;
 };
+export declare type OptionFlagsType = {
+    config: {
+        flags: Array<string>;
+    };
+    notifications: {
+        flags: Array<string>;
+    };
+    watch: {
+        flags: Array<string>;
+    };
+};

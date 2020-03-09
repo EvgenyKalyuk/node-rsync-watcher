@@ -1,5 +1,4 @@
 import watcher from './utils/watcher';
-import readConfigFile from './utils/read-config-file';
 import getOptions from './utils/get-options';
 
 import rsyncComponent from './components/rsync';
@@ -15,7 +14,9 @@ import rsyncConfigComponent from './components/config';
                 rsyncComponent(configItem);
             });
         });
-    } else {
+    }
+
+    if (!Array.isArray(config)) {
         watcher(config.watchingDirs || config.source, () => {
             rsyncComponent(config);
         })
