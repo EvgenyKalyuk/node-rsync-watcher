@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "maintainers": [
+    "Evgeny Kalyuk <kalyuk.evgeny@gmail.com>"
+  ],
   "scripts": {
     "start:watch": "nodemon",
     "start:dev": "ts-node ./src/index.ts",
