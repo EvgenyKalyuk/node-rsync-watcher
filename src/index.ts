@@ -1,31 +1,27 @@
-#!/usr/bin/env node
+import watcher from './utils/watcher';
+import readConfigFile from './utils/read-config-file';
+import getOptions from './utils/get-options';
 
-import commander from 'commander';
+import rsyncComponent from './components/rsync';
+import rsyncConfigComponent from './components/config';
 
-// import rsyncWatcherScript from './scripts/rsync-wather';
+(async () => {
+    const options = getOptions();
+    const config = await rsyncConfigComponent.readConfigFile(options.config);
 
-import getPackageVersion from './utils/get-package-version';
-
-async function init() {
-    let version: string = '';
-
-    try {
-        version = await getPackageVersion();
-    } catch (error) {
-        throw error;
+    if (Array.isArray(config)) {
+        config.forEach((configItem) => {
+            watcher(configItem.watchingDirs || configItem.source, () => {
+                rsyncComponent(configItem);
+            });
+        });
+    } else {
+        watcher(config.watchingDirs || config.source, () => {
+            rsyncComponent(config);
+        })
     }
+})();
 
-    console.log(version);
-
-    commander
-        .passCommandToAction(false)
-        .version(version)
-        .name('node-rsync-watcher')
-        .requiredOption('-c <filePath>, --config <filePath>', 'config file path')
-        .parse(process.argv);
-
-    console.log(commander.config);
-}
-
-init();
-
+process.on('unhandledRejection', (error) => {
+    console.error('unhandledRejection received.', error);
+});
