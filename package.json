@@ -32,5 +32,11 @@
   },
   "engines": {
     "node": ">=8.10.0"
-  }
+  },
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "package.json",
+    "yarn.lock"
+  ]
 }
