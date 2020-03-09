@@ -1,15 +1,19 @@
 {
   "name": "node-rsync-watcher",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "license": "MIT",
   "maintainers": [
     "Evgeny Kalyuk <kalyuk.evgeny@gmail.com>"
   ],
+  "bin": {
+    "nrw": "./lib/index.js"
+  },
   "scripts": {
     "start:watch": "nodemon",
     "start:dev": "ts-node ./src/index.ts",
-    "lint": "eslint ./src/**/*.ts"
+    "lint": "eslint ./src/**/*.ts",
+    "prepublish": "yarn lint"
   },
   "devDependencies": {
     "@types/chokidar": "^2.1.3",
